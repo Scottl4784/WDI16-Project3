@@ -26,7 +26,7 @@ const MovieSchema = new Schema({
     productionDate: {
         type: Date
     },
-    comments: {CommentSchema}
+    comments: [CommentSchema]
 })
 
 const UserSchema = new Schema({
@@ -37,7 +37,7 @@ const UserSchema = new Schema({
         type: String,
         default: "https://www.fillmurray.com/200/300"
     },
-    movies: {MovieSchema}
+    movies: [MovieSchema]
 })
 
 const User = mongoose.model('User', UserSchema)
