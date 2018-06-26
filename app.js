@@ -30,13 +30,13 @@ app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 
 app.use(express.static(__dirname + '/client/build/'))
-app.use('/api/users', usersRouter)
 
 app.get('/', (req,res) => {
     res.sendFile(__dirname + '/client/build/index.html')
-  })
+})
 
-// app.use('/', indexRouter)
-// app.use('/users', usersRouter)
+app.use('/api/users', usersRouter)
+// app.use('/api/users/:userId/movies', moviesRouter)
+
 
 module.exports = app
