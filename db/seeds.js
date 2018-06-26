@@ -32,9 +32,24 @@ User.remove()
             director: "Christopher Nolan",
             comments: [comment1, comment2]
         })
+        const comment3 = new Comment({
+            title: "A masterpiece",
+            comment: "This film will stand the test of time!"
+        })
+        const comment4 = new Comment({
+            title: "Deserves a sequel",
+            comment: "Hopefully we'll get one someday!"
+        })
+        const bladeRunner = new Movie({
+            title: "Blade Runner",
+            summary: "A blade runner must pursue and terminate four replicants who stole a ship in space and have returned to Earth to find their creator.",
+            image: "https://m.media-amazon.com/images/M/MV5BNzQzMzJhZTEtOWM4NS00MTdhLTg0YjgtMjM4MDRkZjUwZDBlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_UX182_CR0,0,182,268_AL_.jpg",
+            director: "Ridley Scott",
+            comments: [comment3, comment4]
+        })
         const scott = new User({
             name: "Scott",
-            movies: [interstellar]
+            movies: [interstellar, bladeRunner]
         })
     
 

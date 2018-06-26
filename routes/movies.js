@@ -11,3 +11,13 @@ router.get('/', (req, res) => {
     console.log(err)
   })
 })
+
+router.get('/:movieId', (req,res) => {
+    const userId = req.params.userId
+    const movieId = req.params.movieId
+    User.findById(userId)
+    .then((user) => {
+        const movie = user.movie.id(movieId)
+        res.send({movie})
+    })
+})
