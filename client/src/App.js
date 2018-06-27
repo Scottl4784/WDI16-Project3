@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import UsersList from './components/UsersList';
 import MovieList from './components/MovieList';
 import IndividualMovie from './components/IndividualMovie';
+import CommentList from './components/CommentList';
 
 class App extends Component {
   render() {
@@ -17,6 +18,7 @@ class App extends Component {
             <Route exact path='/users' component={UsersList}/>
             <Route exact path='/:userId/movies' component={MovieList}/>
             <Route exact path='/:userId/movies/:movieId' component={IndividualMovie}/>
+            <Route exact path='/:userId/movies/:movieId/comments' component={CommentList}/>
             <Route path='/' component={UsersList}/>
           </Switch>
         </div>

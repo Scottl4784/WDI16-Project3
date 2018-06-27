@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios'
+import {Link} from 'react-router-dom'
 
 class IndividualMovie extends Component {
     state = {
@@ -27,16 +28,15 @@ class IndividualMovie extends Component {
     }
 
     render() {
+        const userId = this.props.match.params.userId
+        const movieId = this.state.movie._id
         return (
             <div>
-                {this.state.comments.map((comment, i) => {
-                    return (
-                        <div key={i}>
-                            <h3>{comment.title}</h3>
-                            <p>{comment.comment}</p>
-                        </div>
-                    )
-                })}
+                <h2>{this.state.movie.title}</h2>
+                <img src={this.state.movie.image} alt=""/>
+                <p>{this.state.movie.director}</p>
+                <p>{this.state.movie.summary}</p>
+                <Link to={`/${userId}/movies/${movieId}/comments`} comments={this.state.comments}>Comments</Link>
             </div>
         );
     }
