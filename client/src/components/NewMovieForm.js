@@ -12,9 +12,12 @@ class NewMovieForm extends Component {
     }
     handleSubmit = (event) => {
         event.preventDefault()
-        axios.post(`/api/users/${this.props.match.params.userId}`, this.state).then((res) => {
-            console.log(res.data.movies)
-            this.props.newUser(res.data.movies)
+        axios.post(`/api/users/${this.props.match.params.userId}/movies`, this.state).then((res) => {
+            console.log(this.state)
+            this.props.newMovie(this.state)
+        })
+        .catch((err) => {
+            console.log(err)
         })
     }
 
@@ -25,9 +28,9 @@ class NewMovieForm extends Component {
                  <div>
                 <form onSubmit={this.handleSubmit}>
                     <input
-                        placeholder="Name"
+                        placeholder="Title"
                         type="text"
-                        name="name"
+                        name="title"
                         onChange={this.handleChange}
                     />
                     <input

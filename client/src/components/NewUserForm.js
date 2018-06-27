@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import axios from 'axios'
 
 class NewUserForm extends Component {
+    state = {
 
+    }
     
     handleChange = (event) => {
         const inputName = event.target.name
@@ -15,7 +17,7 @@ class NewUserForm extends Component {
         event.preventDefault()
         axios.post('/api/users', this.state).then((res) => {
             console.log(res.data)
-            this.props.newUser(res.data)
+            this.props.newUser(this.state)
         })
     }
 

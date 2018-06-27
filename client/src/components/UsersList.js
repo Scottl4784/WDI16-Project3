@@ -36,6 +36,7 @@ class UsersList extends Component {
                         <div key={i}>
                         <Link to={`/${user._id}/movies`}>
                         <h3>{user.name}</h3>
+                        <img src={user.image} alt=""/>
                         </Link>
                         </div>
                     )

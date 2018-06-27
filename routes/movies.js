@@ -29,13 +29,27 @@ router.post('/', (req, res) => {
   .then((user) => {
     const newMovie = new Movie (req.body)
     user.movies.push(newMovie)
-    return user.save()
+    user.save()
   })
   .then((user) => {
     res.send({user})
   })
   .catch((err) => {
     console.log(err)
+  })
+})
+
+// Delete Movie
+router.delete('/:movieId', (req, res) => {
+  const userId = req.params.userId
+  const movieId = req.params.movieId
+  User.findById(userId)
+  .then((user) => {
+      user.movies.id(movieId).remove()
+      return user.save()
+  })
+  .then((savedUser) => {
+      res.send({ user: savedUser})
   })
 })
 

@@ -13,7 +13,7 @@ class MovieList extends Component {
         const userId = this.props.match.params.userId
         axios.get(`/api/users/${userId}`)
             .then((res) => {
-                console.log(res.data.movies)
+                console.log()
                 this.setState({
                     user: res.data,
                     movies: res.data.movies,
@@ -43,7 +43,6 @@ class MovieList extends Component {
                             <div key={i}>
                                 <img src={movie.image} alt="" />
                                 <Link to={`/${this.state.user._id}/movies/${movie._id}`}><h3>{movie.title}</h3></Link>
-                                <p>{movie.summary}</p>
                             </div>
                         )
                     })}
