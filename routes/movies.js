@@ -23,4 +23,20 @@ router.get('/:movieId', (req,res) => {
     })
 })
 
+// Create new movie
+router.post('/', (req, res) => {
+  User.findById(req.params.userId)
+  .then((user) => {
+    const newMovie = new Movie (req.body)
+    user.movies.push(newMovie)
+    return user.save()
+  })
+  .then((user) => {
+    res.send({user})
+  })
+  .catch((err) => {
+    console.log(err)
+  })
+})
+
 module.exports = router
