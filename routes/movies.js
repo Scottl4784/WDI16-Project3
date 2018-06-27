@@ -12,12 +12,15 @@ router.get('/', (req, res) => {
   })
 })
 
+// Show individual movie
 router.get('/:movieId', (req,res) => {
     const userId = req.params.userId
     const movieId = req.params.movieId
     User.findById(userId)
     .then((user) => {
-        const movie = user.movie.id(movieId)
+        const movie = user.movies.id(movieId)
         res.send({movie})
     })
 })
+
+module.exports = router

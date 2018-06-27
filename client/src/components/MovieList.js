@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import {Link} from 'react-router-dom'
 
 class MovieList extends Component {
     state = {
@@ -19,6 +20,12 @@ class MovieList extends Component {
         })
     }
 
+    newMovie = (movie) => {
+        const newMovie = [...this.state.movies]
+        newMovie.push(movie)
+        this.setState({movies: newMovie})
+    }
+
     componentDidMount() {
         this.getMovies()
     }
@@ -30,7 +37,7 @@ class MovieList extends Component {
                     return (
                         <div key={i}>
                         <img src={movie.image} alt=""/>
-                        <h3>{movie.title}</h3>
+                        <Link to={`/${this.state.user._id}/movies/${movie._id}`}><h3>{movie.title}</h3></Link>
                         <p>{movie.summary}</p>
                         </div>
                     )

@@ -17,6 +17,19 @@ class UsersList extends Component {
     componentDidMount() {
         this.getUsers()
     }
+    
+    handleSubmit = (event) => {
+        event.preventDefault()
+        axios.post('/api/users', this.state).then((res) => {
+            console.log(res.data)
+            this.newUser(res.data)
+        })
+    }
+    newUser = (user) => {
+        const newUser = [...this.state.users]
+        newUser.push(user)
+        this.setState({users: newUser})
+    }
 
     render() {
         return (
