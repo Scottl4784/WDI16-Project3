@@ -21,15 +21,23 @@ class MovieList extends Component {
             })
     }
 
+    componentDidMount() {
+        this.getMovies()
+    }
+
     newMovie = (movie) => {
         const newMovie = [...this.state.movies]
         newMovie.push(movie)
         this.setState({ movies: newMovie })
     }
-
-    componentDidMount() {
-        this.getMovies()
+    deleteMovie = (movieId) => {
+        const userId = this.props.match.params.userId
+        axios.delete(`/api/users/${userId}/movies/${movieId}`).then((res) => {
+            console.log(res.data.user.movies)
+            this.setState({movies: res.data.user.movies})
+        })
     }
+
 
     render() {
         return (
@@ -43,6 +51,7 @@ class MovieList extends Component {
                             <div key={i}>
                                 <img src={movie.image} alt="" />
                                 <Link to={`/${this.state.user._id}/movies/${movie._id}`}><h3>{movie.title}</h3></Link>
+                                <button onClick={() => {this.deleteMovie(movie._id)}}>Remove Movie</button>
                             </div>
                         )
                     })}

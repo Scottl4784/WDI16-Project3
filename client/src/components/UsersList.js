@@ -25,6 +25,13 @@ class UsersList extends Component {
         this.setState({users: newUser})
     }
 
+    deleteUser = (userId) => {
+        axios.delete(`/api/users/${userId}`).then((res) => {
+            console.log(res.data)
+            this.setState({users: res.data.users})
+        })
+    }
+
     render() {
         return (
             <div>
@@ -38,6 +45,7 @@ class UsersList extends Component {
                         <h3>{user.name}</h3>
                         <img src={user.image} alt=""/>
                         </Link>
+                        <button onClick={() => {this.deleteUser(user._id)}}>Remove User</button>
                         </div>
                     )
                 })}
