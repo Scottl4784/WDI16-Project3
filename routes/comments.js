@@ -1,8 +1,8 @@
 const express = require('express')
 const router = express.Router({ mergeParams: true})
-const {User, Movie} = require('../db/schema')
+const {User, Movie, Comment} = require('../db/schema')
 
-// Get list of all users movies
+// Get list of all comments
 router.get('/', (req, res) => {
         const userId = req.params.userId
         const movieId = req.params.movieId
@@ -12,6 +12,23 @@ router.get('/', (req, res) => {
             res.send({comments})
         })
     })
+
+// Creat new comment
+// Create new movie
+router.post('/', (req, res) => {
+    User.findById(req.params.userId)
+    .then((user) => {
+      const newComment = new Comment (req.body)
+      user.movies.comments.push(newComment)
+      user.save()
+    })
+    .then((user) => {
+      res.send({user})
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+  })
 
 
 module.exports = router
