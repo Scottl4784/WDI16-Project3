@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 import {Link} from 'react-router-dom'
+import NewUserForm from './NewUserForm';
 
 class UsersList extends Component {
     state = {
@@ -18,13 +19,6 @@ class UsersList extends Component {
         this.getUsers()
     }
     
-    handleSubmit = (event) => {
-        event.preventDefault()
-        axios.post('/api/users', this.state).then((res) => {
-            console.log(res.data)
-            this.newUser(res.data)
-        })
-    }
     newUser = (user) => {
         const newUser = [...this.state.users]
         newUser.push(user)
@@ -34,6 +28,9 @@ class UsersList extends Component {
     render() {
         return (
             <div>
+                <div>
+                    <NewUserForm newUser={this.newUser}/>
+                </div>
                 {this.state.users.map((user, i) => {
                     return (
                         <div key={i}>

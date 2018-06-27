@@ -9,7 +9,7 @@ class CommentList extends Component {
     getMovieComments() {
         const userId = this.props.match.params.userId
         const movieId = this.props.match.params.movieId
-        axios.get(`/api/users/${userId}/movies/${movieId}/comments`)
+        axios.get(`/api/users/${userId}/movies/${movieId}`)
         .then((res) => {
             console.log(res.data.movie.comments)
             this.setState({

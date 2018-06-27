@@ -4,15 +4,14 @@ const {User, Movie} = require('../db/schema')
 
 // Get list of all users movies
 router.get('/', (req, res) => {
-    router.get('/:movieId', (req,res) => {
         const userId = req.params.userId
         const movieId = req.params.movieId
         User.findById(userId)
         .then((user) => {
-            const movie = user.movies.id(movieId)
-            res.send({movie})
+            const comments = user.movies.id(movieId).comments
+            res.send({comments})
         })
     })
-})
+
 
 module.exports = router
