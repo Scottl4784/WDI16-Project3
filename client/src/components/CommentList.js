@@ -32,8 +32,11 @@ class CommentList extends Component {
         const userId = this.props.match.params.userId
         const movieId = this.props.match.params.movieId
         axios.delete(`/api/users/${userId}/movies/${movieId}/comments/${commentId}`).then((res) => {
-            console.log()
-            this.setState({comments: res.data.movie.comments})
+            const singleMovie = res.data.user.movies.find((movie) => movie._id === movieId)
+            this.setState({comments: singleMovie.comments})
+        })
+        .catch((err) => {
+            console.log(err)
         })
     }
 

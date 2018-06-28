@@ -42,8 +42,8 @@ router.post('/', (req, res) => {
         user.movies.id(movieId).comments.id(commentId).remove()
         return user.save()
     })
-    .then((savedUser) => {
-        res.send({ user: savedUser})
+    .then((user) => {
+        res.send({ user})
     })
   })
 
