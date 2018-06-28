@@ -37,7 +37,7 @@ app.get('/', (req,res) => {
 
 app.use('/api/users', usersRouter)
 app.use('/api/users/:userId/movies', moviesRouter)
-app.use('/api/users/:userId/movies/:moviesId/comments', commentsRouter)
+app.use('/api/users/:userId/movies/:movieId/comments', commentsRouter)
 
 
 module.exports = app
