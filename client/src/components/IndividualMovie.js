@@ -32,10 +32,12 @@ class IndividualMovie extends Component {
         const movieId = this.state.movie._id
         return (
             <div>
-                <h2>{this.state.movie.title}</h2>
-                <img src={this.state.movie.image} alt=""/>
-                <p>{this.state.movie.director}</p>
-                <p>{this.state.movie.summary}</p>
+                <h2>{this.state.movie.Title}</h2>
+                <img src={this.state.movie.Poster} alt=""/>
+                <p>{this.state.movie.Director}</p>
+                <p>{this.state.movie.Plot}</p>
+                <p>{this.state.movie.Rated}</p>
+                <p>{this.state.movie.Year}</p>
                 <Link to={`/${userId}/movies/${movieId}/comments`} comments={this.state.comments}>Comments</Link>
             </div>
         );

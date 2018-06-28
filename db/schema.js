@@ -14,20 +14,20 @@ const CommentSchema = new Schema({
 })
 
 const MovieSchema = new Schema({
-    title: {
+    Title: {
         type: String
     },
-    summary: {
+    Plot: {
         type: String
     },
-    image: {
+    Rated: {
         type: String
     },
-    director: {
+    Director: {
         type: String
     },
-    productionDate: {
-        type: Date
+    Year: {
+        type: String
     },
     Poster: String,
     comments: [CommentSchema]

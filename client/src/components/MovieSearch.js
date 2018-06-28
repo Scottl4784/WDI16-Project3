@@ -12,13 +12,14 @@ class MovieSearch extends Component {
         this.setState({
             search: userInput
         })
+        console.log(this.state.search)
     }
     handleSubmit = (i) => {
         const userId = this.props.match.params.userId
-        // event.preventDefault()
         axios.post(`/api/users/${userId}/movies`, this.state.searchResults[i]).then((res) => {
             this.props.newMovie(res.data.user.movies)
             console.log(res)
+            this.resetState()
         })
         .catch((err) => {
             console.log(err)
@@ -33,9 +34,12 @@ class MovieSearch extends Component {
             console.log(res)
             })
     }
-    // componentDidMount() {
-    //     this.handleSearch()
-    // }
+    resetState = () => {
+        const resetState = {...this.state}
+        resetState.search = []
+        resetState.searchResults = []
+        this.setState(resetState)
+    }
     
 
 
@@ -44,6 +48,7 @@ class MovieSearch extends Component {
             <div>
                  <div>
                     <input
+                        value={this.state.search}
                         placeholder="Title"
                         type="text"
                         name="title"
@@ -55,11 +60,9 @@ class MovieSearch extends Component {
                     {this.state.searchResults.map((result, i) => {
                         return (
                             <div key={i}>
-                               
                                 {result.Title}
                                 <img src={result.Poster} alt=""/>
                                 <button onClick={() => this.handleSubmit(i)}>Select</button>
-                    
                             </div>
                         )
                     })}

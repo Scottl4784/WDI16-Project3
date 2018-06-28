@@ -3,6 +3,13 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 import NewMovieForm from './NewMovieForm';
 import MovieSearch from './MovieSearch';
+import styled from 'styled-components'
+
+const EachMovie = styled.div`
+img {
+    width: 100px;
+}
+`
 
 class MovieList extends Component {
     state = {
@@ -34,6 +41,7 @@ class MovieList extends Component {
 
     newMovie = (movies) => {
         this.setState({ movies: movies })
+        this.props.history.push()
         console.log(movies)
     }
     deleteMovie = (movieId) => {
@@ -56,11 +64,12 @@ class MovieList extends Component {
                 <div>
                     {this.state.movies.map((movie, i) => {
                         return (
-                            <div key={i}>
+                            <EachMovie key={i}>
+                                <img src={movie.Poster} alt=""/>
                                 <img src={movie.image} alt="" />
-                                <Link to={`/${this.state.user._id}/movies/${movie._id}`}><h3>{movie.title}</h3></Link>
+                                <Link to={`/${this.state.user._id}/movies/${movie._id}`}><h3>{movie.Title}</h3></Link>
                                 <button onClick={() => {this.deleteMovie(movie._id)}}>Remove Movie</button>
-                            </div>
+                            </EachMovie>
                         )
                     })}
                 </div>
