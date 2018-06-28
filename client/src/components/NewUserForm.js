@@ -14,7 +14,7 @@ class NewUserForm extends Component {
         event.preventDefault()
         axios.post('/api/users', this.state).then((res) => {
             console.log(res.data)
-            this.props.newUser(res.data)
+            this.props.newUser(res.data.user)
         })
     }
 

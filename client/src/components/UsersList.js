@@ -2,6 +2,13 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import {Link} from 'react-router-dom'
 import NewUserForm from './NewUserForm';
+import styled from 'styled-components'
+
+const UserList = styled.div`
+    img {
+        width: 50px;
+    }
+`
 
 class UsersList extends Component {
     state = {
@@ -20,7 +27,9 @@ class UsersList extends Component {
     }
     
     newUser = (user) => {
-        this.setState({users: user})
+        const newUser = [...this.state.users]
+        newUser.push(user)
+        this.setState({users: newUser})
     }
 
     deleteUser = (userId) => {
@@ -36,6 +45,7 @@ class UsersList extends Component {
                 <div>
                     <NewUserForm newUser={this.newUser} {...this.props}/>
                 </div>
+                <UserList>
                 {this.state.users.map((user, i) => {
                     return (
                         <div key={i}>
@@ -47,6 +57,7 @@ class UsersList extends Component {
                         </div>
                     )
                 })}
+                </UserList>
             </div>
         );
     }
