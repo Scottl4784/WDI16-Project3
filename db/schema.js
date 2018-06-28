@@ -29,6 +29,7 @@ const MovieSchema = new Schema({
     productionDate: {
         type: Date
     },
+    Poster: String,
     comments: [CommentSchema]
 })
 

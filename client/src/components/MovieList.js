@@ -8,6 +8,7 @@ class MovieList extends Component {
     state = {
         user: [],
         movies: [],
+        searchResults: []
     }
 
     getMovies() {
@@ -26,8 +27,14 @@ class MovieList extends Component {
         this.getMovies()
     }
 
+    
+    newSearch = (results) => {
+        this.setState({searchResults: results})
+    }
+
     newMovie = (movies) => {
         this.setState({ movies: movies })
+        console.log(movies)
     }
     deleteMovie = (movieId) => {
         const userId = this.props.match.params.userId
@@ -44,7 +51,7 @@ class MovieList extends Component {
             <div>
                 <div>
                     {/* <NewMovieForm newMovie={this.newMovie} {...this.props} /> */}
-                    <MovieSearch/>
+                    <MovieSearch newMovie={this.newMovie} {...this.props} searchResults={this.newSearch}/>
                 </div>
                 <div>
                     {this.state.movies.map((movie, i) => {
