@@ -11,10 +11,10 @@ class NewMovieForm extends Component {
         })
     }
     handleSubmit = (event) => {
+        const userId = this.props.match.params.userId
         event.preventDefault()
-        axios.post(`/api/users/${this.props.match.params.userId}/movies`, this.state).then((res) => {
-            console.log(this.state)
-            this.props.newMovie(this.state)
+        axios.post(`/api/users/${userId}/movies`, this.state).then((res) => {
+            this.props.newMovie(res.data.user.movies)
         })
         .catch((err) => {
             console.log(err)

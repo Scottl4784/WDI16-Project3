@@ -25,10 +25,8 @@ class MovieList extends Component {
         this.getMovies()
     }
 
-    newMovie = (movie) => {
-        const newMovie = [...this.state.movies]
-        newMovie.push(movie)
-        this.setState({ movies: newMovie })
+    newMovie = (movies) => {
+        this.setState({ movies: movies })
     }
     deleteMovie = (movieId) => {
         const userId = this.props.match.params.userId

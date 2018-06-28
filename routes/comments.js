@@ -39,12 +39,16 @@ router.post('/', (req, res) => {
     const commentId = req.params.commentId
     User.findById(userId)
     .then((user) => {
+        console.log(commentId)
         user.movies.id(movieId).comments.id(commentId).remove()
         return user.save()
     })
     .then((user) => {
         res.send({ user})
     })
+    .catch((err) => {
+        console.log(err)
+      })
   })
 
 module.exports = router

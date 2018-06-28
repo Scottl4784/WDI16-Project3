@@ -24,9 +24,7 @@ class CommentList extends Component {
     }
 
     newComment = (comment) => {
-        const newComment = [...this.state.comments]
-        newComment.push(comment)
-        this.setState({ comments: newComment })
+        this.setState({ comments: comment })
     }
     deleteComment = (commentId) => {
         const userId = this.props.match.params.userId

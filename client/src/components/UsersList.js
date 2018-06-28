@@ -20,9 +20,7 @@ class UsersList extends Component {
     }
     
     newUser = (user) => {
-        const newUser = [...this.state.users]
-        newUser.push(user)
-        this.setState({users: newUser})
+        this.setState({users: user})
     }
 
     deleteUser = (userId) => {
@@ -36,7 +34,7 @@ class UsersList extends Component {
         return (
             <div>
                 <div>
-                    <NewUserForm newUser={this.newUser}/>
+                    <NewUserForm newUser={this.newUser} {...this.props}/>
                 </div>
                 {this.state.users.map((user, i) => {
                     return (

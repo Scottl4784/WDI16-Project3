@@ -10,10 +10,13 @@ class NewCommentForm extends Component {
         })
     }
     handleSubmit = (event) => {
+        const userId = this.props.match.params.userId
+        const movieId = this.props.match.params.movieId
         event.preventDefault()
-        axios.post(`/api/users/${this.props.match.params.userId}/movies/${this.props.match.params.movieId}/comments`, this.state).then(() => {
-            console.log(this.state)
-            this.props.newComment(this.state)
+        axios.post(`/api/users/${userId}/movies/${movieId}/comments`, this.state).then((res) => {
+            const singleMovie = res.data.user.movies.find((movie) => movie._id === movieId)
+            console.log(res.data)
+            this.props.newComment(singleMovie.comments)
         })
         .catch((err) => {
             console.log(err)
@@ -28,6 +31,12 @@ class NewCommentForm extends Component {
                         placeholder="Title"
                         type="text"
                         name="title"
+                        onChange={this.handleChange}
+                    />
+                    <input
+                        placeholder="Author"
+                        type="text"
+                        name="author"
                         onChange={this.handleChange}
                     />
                     <input

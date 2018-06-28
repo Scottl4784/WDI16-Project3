@@ -5,6 +5,9 @@ const CommentSchema = new Schema({
     title: {
         type: String
     },
+    author: {
+        type: String
+    },
     comment: {
         type: String
     }

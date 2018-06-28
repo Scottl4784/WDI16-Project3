@@ -26,9 +26,9 @@ router.get('/:userId', (req, res) => {
 // Create a new user
 router.post('/', (req, res) => {
   const newUser = new User (req.body)
-  newUser.save()
+  return newUser.save()
   .then((user) => {
-    res.send(user)
+    res.send({user})
   })
   .catch((err) => {
     console.log(err)

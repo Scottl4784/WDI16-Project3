@@ -29,7 +29,7 @@ router.post('/', (req, res) => {
   .then((user) => {
     const newMovie = new Movie (req.body)
     user.movies.push(newMovie)
-    user.save()
+    return user.save()
   })
   .then((user) => {
     res.send({user})
