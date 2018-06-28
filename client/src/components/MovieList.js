@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import NewMovieForm from './NewMovieForm';
+import MovieSearch from './MovieSearch';
 
 class MovieList extends Component {
     state = {
@@ -35,13 +36,15 @@ class MovieList extends Component {
             this.setState({movies: res.data.user.movies})
         })
     }
+    
 
 
     render() {
         return (
             <div>
                 <div>
-                    <NewMovieForm newMovie={this.newMovie} {...this.props} />
+                    {/* <NewMovieForm newMovie={this.newMovie} {...this.props} /> */}
+                    <MovieSearch/>
                 </div>
                 <div>
                     {this.state.movies.map((movie, i) => {
