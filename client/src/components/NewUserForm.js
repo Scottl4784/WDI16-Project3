@@ -45,7 +45,7 @@ class NewUserForm extends Component {
                         name="image"
                         onChange={this.handleChange}
                     />
-                    <button>Submit</button>
+                    <button>Create</button>
                 </form>
             </Container>
         );

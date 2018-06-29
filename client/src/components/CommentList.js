@@ -14,6 +14,11 @@ h2 {
 h4 {
     margin: 5px 0
 }
+button {
+    background-color: #981717;
+    border: none;
+    color: white;
+}
 `
 
 class CommentList extends Component {
@@ -70,11 +75,10 @@ class CommentList extends Component {
                             <EachComment key={i}>
                                 {comment.editComment ? <EditComment /> :
                                     <div>
+                                        <button onClick={() => { this.deleteComment(comment._id) }}>X</button>
                                         <h2>Title: {comment.title}</h2>
                                         <h4>Author: {comment.author}</h4>
                                         <p>{comment.comment}</p>
-                                        <button onClick={() => { this.deleteComment(comment._id) }}>Remove Comment</button>
-                                        <button onClick={() => {this.toggleEditComment(i)}}>Edit Comment</button>
                                     </div>}
                             </EachComment>
                         )

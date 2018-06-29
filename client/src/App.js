@@ -10,7 +10,7 @@ import styled from 'styled-components'
 
 const Body = styled.div`
     width: 76%;
-    height: 125%;
+    height: 150%;
     position: absolute;
     background-color: #bdaf31cc;
     background-size: cover;

@@ -106,7 +106,7 @@ class MovieSearch extends Component {
     render() {
         return (
             <Container>
-                <h3>Add a new movie</h3>
+                <h3>Find a movie</h3>
                 <SearchBar>
                     <input
                         value={this.state.search}

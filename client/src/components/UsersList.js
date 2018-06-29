@@ -59,6 +59,7 @@ const SignUp = styled.div`
     color: white;
     border: none;
     input {
+        height: 25px;
         border-radius: 5px;
         border-style: none;
         margin: 0 5px;
