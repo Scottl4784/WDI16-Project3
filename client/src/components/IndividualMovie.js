@@ -38,7 +38,7 @@ class IndividualMovie extends Component {
                 <p>{this.state.movie.Plot}</p>
                 <p>{this.state.movie.Rated}</p>
                 <p>{this.state.movie.Year}</p>
-                <Link to={`/${userId}/movies/${movieId}/comments`} comments={this.state.comments}>Comments</Link>
+                <button><Link to={`/${userId}/movies/${movieId}/comments`} comments={this.state.comments}>Comments</Link></button>
             </div>
         );
     }

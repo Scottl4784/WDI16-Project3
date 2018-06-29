@@ -16,6 +16,7 @@ flex-direction: column;
 border-style: solid;
 padding: 20px;
 align-items: center;
+height: 400px;
 img {
     width: 100px;
     height: 150px;
