@@ -2,17 +2,41 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import styled from 'styled-components'
 
-const Container = styled.div`
-    margin: 0 5% 0 0;
-    display: flex;
-    flex-direction: column;
-    img {
-        width: 100px;
-        height: 150px;
-    }
-`
+// const Container = styled.div`
+//     margin: 0 5% 0 15%;
+//     float: right;
+//     display: flex;
+//     flex-direction: column;
+//     border-style: solid;
+//     padding: 20px;
+//     align-items: center;
+//     img {
+//         width: 100px;
+//         height: 150px;
+//     }
+// `
 const SearchBar = styled.div`
     display: flex;
+    align-items: center;
+    margin: 0 0 25px 0
+    button {
+        height: 30px;
+        width: 60px;
+        border-radius: 10px;
+        background: #eceae4;
+    }
+    input {
+        height: 25px;
+    }
+`
+const SearchResults = styled.div`
+    display: flex;
+    flex-direction: column;
+    button {
+        background: #333f4b;
+        border-style: none;
+    }
+    
 `
 
 class MovieSearch extends Component {
@@ -67,7 +91,7 @@ class MovieSearch extends Component {
 
     render() {
         return (
-            <Container>
+            <div>
                 <SearchBar>
                     <input
                         value={this.state.search}
@@ -76,18 +100,16 @@ class MovieSearch extends Component {
                         name="title"
                         onChange={this.handleChange}
                     />
-                    <button onClick={this.handleSearch}>Find Movie</button>
+                    <button onClick={this.handleSearch}>Search</button>
                     </SearchBar>
                     {this.state.searchResults.map((result, i) => {
                         return (
-                            <div key={i}>
-                                {result.Title}
-                                <img src={result.Poster} alt=""/>
-                                <button onClick={() => this.handleSubmit(i)}>Select</button>
-                            </div>
+                            <SearchResults key={i}>                                
+                                <button onClick={() => this.handleSubmit(i)}><img src={result.Poster} alt=""/></button>
+                            </SearchResults>
                         )
                     })}
-            </Container>
+            </div>
         );
     }
 }
