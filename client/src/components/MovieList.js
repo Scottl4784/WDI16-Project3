@@ -4,7 +4,11 @@ import { Link } from 'react-router-dom'
 import MovieSearch from './MovieSearch';
 import styled from 'styled-components'
 
-
+const Container = styled.div`
+display: flex;
+flex-direction: row-reverse;
+justify-content: space-evenly;
+`
 const ListOfMovies = styled.div`
     display: flex;
     justify-content: space-around;
@@ -14,6 +18,9 @@ const EachMovie = styled.div`
 img {
     width: 100px;
 }
+`
+const SearchBar = styled.div`
+
 `
 
 class MovieList extends Component {
@@ -61,11 +68,8 @@ class MovieList extends Component {
 
     render() {
         return (
-            <div>
-                <div>
-                    {/* <NewMovieForm newMovie={this.newMovie} {...this.props} /> */}
+            <Container>
                     <MovieSearch newMovie={this.newMovie} {...this.props} searchResults={this.newSearch}/>
-                </div>
                 <ListOfMovies>
                     {this.state.movies.map((movie, i) => {
                         return (
@@ -78,7 +82,7 @@ class MovieList extends Component {
                         )
                     })}
                 </ListOfMovies>
-            </div>
+            </Container>
         );
     }
 }

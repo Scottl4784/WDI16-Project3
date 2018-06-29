@@ -1,5 +1,19 @@
 import React, { Component } from 'react';
 import axios from 'axios'
+import styled from 'styled-components'
+
+const Container = styled.div`
+    margin: 0 5% 0 0;
+    display: flex;
+    flex-direction: column;
+    img {
+        width: 100px;
+        height: 150px;
+    }
+`
+const SearchBar = styled.div`
+    display: flex;
+`
 
 class MovieSearch extends Component {
     state = {
@@ -53,9 +67,8 @@ class MovieSearch extends Component {
 
     render() {
         return (
-            <div>
-                {this.state.searchForMovie ? 
-                 <div>
+            <Container>
+                <SearchBar>
                     <input
                         value={this.state.search}
                         placeholder="Title"
@@ -63,12 +76,8 @@ class MovieSearch extends Component {
                         name="title"
                         onChange={this.handleChange}
                     />
-                    <button onClick={this.handleSearch}>Search</button>
-                </div>
-                    :
-                    <button onClick={this.toggleSearch}>Add Movie</button>
-                    }
-                <div>
+                    <button onClick={this.handleSearch}>Find Movie</button>
+                    </SearchBar>
                     {this.state.searchResults.map((result, i) => {
                         return (
                             <div key={i}>
@@ -78,8 +87,7 @@ class MovieSearch extends Component {
                             </div>
                         )
                     })}
-                </div>
-            </div>
+            </Container>
         );
     }
 }
