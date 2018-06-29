@@ -12,7 +12,7 @@ align-items: center;
 height: 400px;
 width: 200px;
 margin: 20px;
-background-color: #000000ad;
+background-color: #000000b8;
 border: none;
 color: white;
 img {

@@ -9,24 +9,6 @@ display: flex;
 flex-direction: row;
 
 `
-const SearchBar = styled.div`
-// float: right;
-// display: flex;
-// flex-direction: column;
-// border-style: solid;
-// padding: 20px;
-// align-items: center;
-// height: 200px;
-// width: 200px
-// margin: 20px;
-// background-color: #000000ad;
-// border: none;
-// color: white;
-// img {
-//     width: 100px;
-//     height: 150px;
-// }
-`
 const ListOfMovies = styled.div`
     display: flex;
     justify-content: flex-start;
@@ -120,9 +102,9 @@ class MovieList extends Component {
                             )
                         })}
                     </ListOfMovies>
-                    <SearchBar>
+                    <div>
                         <MovieSearch newMovie={this.newMovie} {...this.props} searchResults={this.newSearch} />
-                    </SearchBar>
+                    </div>
                 </Container>
             </div>
         );

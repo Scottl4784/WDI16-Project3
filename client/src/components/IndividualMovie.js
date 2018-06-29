@@ -11,7 +11,10 @@ const Poster = styled.div`
 
 `
 const MovieInfo = styled.div`
+    background-color: #000000bf;
     margin: 50px;
+    padding: 25px;
+    color: white;
 `
 
 class IndividualMovie extends Component {
