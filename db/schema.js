@@ -10,6 +10,10 @@ const CommentSchema = new Schema({
     },
     comment: {
         type: String
+    },
+    editComment: {
+        type: Boolean,
+        default: false
     }
 })
 
