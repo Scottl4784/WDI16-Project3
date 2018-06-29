@@ -29,7 +29,6 @@ class IndividualMovie extends Component {
         const movieId = this.props.match.params.movieId
         axios.get(`/api/users/${userId}/movies/${movieId}`)
             .then((res) => {
-                console.log(res.data)
                 this.setState({
                     user: res.data,
                     movie: res.data.movie,

@@ -45,7 +45,6 @@ class MovieList extends Component {
         const userId = this.props.match.params.userId
         axios.get(`/api/users/${userId}`)
             .then((res) => {
-                console.log()
                 this.setState({
                     user: res.data,
                     movies: res.data.movies,
@@ -65,17 +64,14 @@ class MovieList extends Component {
     newMovie = (movies) => {
         this.setState({ movies: movies })
         this.props.history.push()
-        console.log(movies)
     }
     deleteMovie = (movieId) => {
         const userId = this.props.match.params.userId
         axios.delete(`/api/users/${userId}/movies/${movieId}`).then((res) => {
-            console.log(res.data.user.movies)
             this.setState({ movies: res.data.user.movies })
         })
     }
        toggleSearch = () => {
-        console.log('test')
         const searchForMovie = !this.state.searchForMovie
         this.setState({searchForMovie})
        }

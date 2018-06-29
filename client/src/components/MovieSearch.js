@@ -81,7 +81,6 @@ class MovieSearch extends Component {
             const newSearchResults = [...this.state.searchResults]
             newSearchResults.push(res.data)
             this.setState({ searchResults: newSearchResults })
-            console.log(res)
             })
     }
     resetState = () => {
@@ -91,7 +90,6 @@ class MovieSearch extends Component {
         this.setState(resetState)
     }
     toggleSearch = () => {
-        console.log('test')
         const searchForMovie = !this.state.searchForMovie
         this.setState({searchForMovie})
     }

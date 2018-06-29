@@ -73,7 +73,6 @@ class UsersList extends Component {
 
     getUsers() {
         axios.get('/api/users').then(res => {
-            console.log(res.data.users)
             this.setState({ users: res.data.users })
         })
     }
@@ -90,7 +89,6 @@ class UsersList extends Component {
 
     deleteUser = (userId) => {
         axios.delete(`/api/users/${userId}`).then((res) => {
-            console.log(res.data)
             this.setState({ users: res.data.users })
         })
     }

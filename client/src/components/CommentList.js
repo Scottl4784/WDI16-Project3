@@ -31,7 +31,6 @@ class CommentList extends Component {
         const movieId = this.props.match.params.movieId
         axios.get(`/api/users/${userId}/movies/${movieId}`)
             .then((res) => {
-                console.log(res.data.movie.comments)
                 this.setState({
                     comments: res.data.movie.comments,
                 })
@@ -60,7 +59,6 @@ class CommentList extends Component {
     toggleEditComment = (i) => {
         const editComment = !this.state.comments[i].editComment
         this.setState({ editComment })
-        console.log(this.state.comments[i].editComment)
     }
 
     render() {

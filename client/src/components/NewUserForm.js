@@ -14,7 +14,6 @@ class NewUserForm extends Component {
         this.setState({
             [inputName]: userInput
         })
-        console.log(this.state)
     }
     handleSubmit = (event) => {
         event.preventDefault()

@@ -16,6 +16,9 @@ background-color: #000000b8;
 border: none;
 color: white;
 text-align: center;
+h3 {
+    margin: 0 0 15px 0;
+}
 input {
     text-align: center;
     width: 175px;
@@ -45,7 +48,6 @@ class NewCommentForm extends Component {
         const movieId = this.props.match.params.movieId
         axios.post(`/api/users/${userId}/movies/${movieId}/comments`, this.state).then((res) => {
             const singleMovie = res.data.user.movies.find((movie) => movie._id === movieId)
-            console.log(res.data)
             this.props.newComment(singleMovie.comments)
         })
         .catch((err) => {
@@ -61,6 +63,7 @@ class NewCommentForm extends Component {
     render() {
         return (
             <Container>
+                <h3>New Comment</h3>
                 <form onKeyPress={this.handleKeyPress}>
                     <input
                         placeholder="Title"
