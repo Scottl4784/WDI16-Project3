@@ -5,6 +5,15 @@ import UsersList from './components/UsersList';
 import MovieList from './components/MovieList';
 import IndividualMovie from './components/IndividualMovie';
 import CommentList from './components/CommentList';
+import styled from 'styled-components'
+
+const Body = styled.div`
+    padding: 25px 0;
+    width: 100%;
+    position: absolute;
+    background-color: gray;
+    background-size: cover;
+`
 
 class App extends Component {
   render() {
@@ -14,6 +23,7 @@ class App extends Component {
           <div>
             <Navbar />
           </div>
+          <Body>
           <Switch>
             <Route exact path='/users' component={UsersList}/>
             <Route exact path='/:userId/movies' component={MovieList}/>
@@ -21,6 +31,7 @@ class App extends Component {
             <Route exact path='/:userId/movies/:movieId/comments' component={CommentList}/>
             <Route path='/' component={UsersList}/>
           </Switch>
+          </Body>
         </div>
       </Router>
     );

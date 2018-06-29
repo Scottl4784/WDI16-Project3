@@ -1,10 +1,15 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
-import NewMovieForm from './NewMovieForm';
 import MovieSearch from './MovieSearch';
 import styled from 'styled-components'
 
+
+const ListOfMovies = styled.div`
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+`
 const EachMovie = styled.div`
 img {
     width: 100px;
@@ -61,7 +66,7 @@ class MovieList extends Component {
                     {/* <NewMovieForm newMovie={this.newMovie} {...this.props} /> */}
                     <MovieSearch newMovie={this.newMovie} {...this.props} searchResults={this.newSearch}/>
                 </div>
-                <div>
+                <ListOfMovies>
                     {this.state.movies.map((movie, i) => {
                         return (
                             <EachMovie key={i}>
@@ -72,7 +77,7 @@ class MovieList extends Component {
                             </EachMovie>
                         )
                     })}
-                </div>
+                </ListOfMovies>
             </div>
         );
     }

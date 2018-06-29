@@ -4,7 +4,8 @@ import axios from 'axios'
 class MovieSearch extends Component {
     state = {
         search: [],
-        searchResults: []
+        searchResults: [],
+        searchForMovie: false
     }
 
     handleChange = (event) => {
@@ -20,6 +21,9 @@ class MovieSearch extends Component {
             this.props.newMovie(res.data.user.movies)
             console.log(res)
             this.resetState()
+        })
+        .then(() => {
+            this.toggleSearch()
         })
         .catch((err) => {
             console.log(err)
@@ -40,12 +44,17 @@ class MovieSearch extends Component {
         resetState.searchResults = []
         this.setState(resetState)
     }
+    toggleSearch = () => {
+        const searchForMovie = !this.state.searchForMovie
+        this.setState({searchForMovie})
+    }
     
 
 
     render() {
         return (
             <div>
+                {this.state.searchForMovie ? 
                  <div>
                     <input
                         value={this.state.search}
@@ -56,6 +65,9 @@ class MovieSearch extends Component {
                     />
                     <button onClick={this.handleSearch}>Search</button>
                 </div>
+                    :
+                    <button onClick={this.toggleSearch}>Add Movie</button>
+                    }
                 <div>
                     {this.state.searchResults.map((result, i) => {
                         return (
