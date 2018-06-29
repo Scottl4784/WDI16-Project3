@@ -9,7 +9,7 @@ display: flex;
 flex-direction: row;
 
 `
-const SearchBar =  styled.div`
+const SearchBar = styled.div`
 float: right;
 display: flex;
 flex-direction: column;
@@ -17,6 +17,9 @@ border-style: solid;
 padding: 20px;
 align-items: center;
 height: 400px;
+margin: 20px;
+background-color: #000000ad;
+color: white;
 img {
     width: 100px;
     height: 150px;
@@ -36,12 +39,14 @@ const EachMovie = styled.div`
     margin: 5%;
     display: flex;
     flex-direction: column;
-    a {
-        
+    button {
+        background-color: #981717;
+        border: none;
+        color: white;
     }
-    img {
-    
-    }
+`
+const Heading = styled.div`
+    padding: 0 0 0 18%;
 `
 
 class MovieList extends Component {
@@ -67,9 +72,9 @@ class MovieList extends Component {
         this.getMovies()
     }
 
-    
+
     newSearch = (results) => {
-        this.setState({searchResults: results})
+        this.setState({ searchResults: results })
     }
 
     newMovie = (movies) => {
@@ -81,33 +86,38 @@ class MovieList extends Component {
         const userId = this.props.match.params.userId
         axios.delete(`/api/users/${userId}/movies/${movieId}`).then((res) => {
             console.log(res.data.user.movies)
-            this.setState({movies: res.data.user.movies})
+            this.setState({ movies: res.data.user.movies })
         })
     }
-    
+
 
 
     render() {
         return (
-            <Container>
-                <ListOfMovies>
-                    {this.state.movies.map((movie, i) => {
-                        return (
-                            <EachMovie key={i}>
-                                <Link to={`/${this.state.user._id}/movies/${movie._id}`}>
-                                <img src={movie.Poster} alt=""/>
-                                {/* <h3>{movie.Title}</h3> */}
-                                </Link>
-                                
-                                <button onClick={() => {this.deleteMovie(movie._id)}}>Remove Movie</button>
-                            </EachMovie>
-                        )
-                    })}
-                </ListOfMovies>
-                <SearchBar>
-                    <MovieSearch newMovie={this.newMovie} {...this.props} searchResults={this.newSearch}/>
+            <div>
+                <Heading>
+                    <h1>Your Movies</h1>
+                </Heading>
+                <Container>
+                    <ListOfMovies>
+                        {this.state.movies.map((movie, i) => {
+                            return (
+                                <EachMovie key={i}>
+                                    <Link to={`/${this.state.user._id}/movies/${movie._id}`}>
+                                        <img src={movie.Poster} alt="" />
+                                        {/* <h3>{movie.Title}</h3> */}
+                                    </Link>
+
+                                    <button onClick={() => { this.deleteMovie(movie._id) }}>Remove Movie</button>
+                                </EachMovie>
+                            )
+                        })}
+                    </ListOfMovies>
+                    <SearchBar>
+                        <MovieSearch newMovie={this.newMovie} {...this.props} searchResults={this.newSearch} />
                     </SearchBar>
-            </Container>
+                </Container>
+            </div>
         );
     }
 }

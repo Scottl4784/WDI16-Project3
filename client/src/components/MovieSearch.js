@@ -2,19 +2,9 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import styled from 'styled-components'
 
-// const Container = styled.div`
-//     margin: 0 5% 0 15%;
-//     float: right;
-//     display: flex;
-//     flex-direction: column;
-//     border-style: solid;
-//     padding: 20px;
-//     align-items: center;
-//     img {
-//         width: 100px;
-//         height: 150px;
-//     }
-// `
+const Container = styled.div`
+  text-align: center;
+`
 const SearchBar = styled.div`
     display: flex;
     align-items: center;
@@ -91,7 +81,8 @@ class MovieSearch extends Component {
 
     render() {
         return (
-            <div>
+            <Container>
+                <h3>Add a new movie</h3>
                 <SearchBar>
                     <input
                         value={this.state.search}
@@ -109,7 +100,7 @@ class MovieSearch extends Component {
                             </SearchResults>
                         )
                     })}
-            </div>
+            </Container>
         );
     }
 }

@@ -9,12 +9,12 @@ import styled from 'styled-components'
 
 
 const Body = styled.div`
-    width: 70%;
-    height: 100%;
+    width: 76%;
+    height: 125%;
     position: absolute;
-    background-color: #333f4b;
+    background-color: #bdaf31cc;
     background-size: cover;
-    margin: 0 15%;
+    margin: 0 12%;
     a {
       color: inherit;
       text-decoration: none;
