@@ -9,10 +9,12 @@ import styled from 'styled-components'
 
 
 const Body = styled.div`
-    width: 100%;
+    width: 70%;
+    height: 100%;
     position: absolute;
     background-color: #333f4b;
     background-size: cover;
+    margin: 0 15%;
     a {
       color: inherit;
       text-decoration: none;
@@ -25,7 +27,7 @@ class App extends Component {
       <Router>
         <Body>
           <div>
-            <Navbar />
+            <Navbar {...this.props} />
           </div>
           <div>
             <Switch>

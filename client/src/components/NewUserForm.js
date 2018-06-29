@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 import axios from 'axios'
+import styled from 'styled-components'
+
+const Container = styled.div`
+`
 
 class NewUserForm extends Component {
+
     
     handleChange = (event) => {
         const inputName = event.target.name
@@ -9,20 +14,24 @@ class NewUserForm extends Component {
         this.setState({
             [inputName]: userInput
         })
+        console.log(this.state)
     }
     handleSubmit = (event) => {
         event.preventDefault()
         axios.post('/api/users', this.state).then((res) => {
-            console.log(res.data)
             this.props.newUser(res.data.user)
         })
+    }
+    resetState = () => {
+        let resetState = {...this.state}
+        resetState = []
+        this.setState(resetState)
     }
 
 
     render() {
         return (
-            <div>
-                 <div>
+            <Container>
                 <form onSubmit={this.handleSubmit}>
                     <input
                         placeholder="Name"
@@ -38,8 +47,7 @@ class NewUserForm extends Component {
                     />
                     <button>Submit</button>
                 </form>
-                </div>
-            </div>
+            </Container>
         );
     }
 }

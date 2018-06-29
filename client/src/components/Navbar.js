@@ -3,9 +3,9 @@ import {Link} from 'react-router-dom'
 import styled from 'styled-components'
 
 const Container = styled.div`
-    height: 3rem;
+    height: 5rem;
     background: #6b6b6b;
-    margin: 0 0 25px
+    margin: 25px;
 `
 
 class Navbar extends Component {
@@ -13,6 +13,7 @@ class Navbar extends Component {
         return (
             <Container>
                 <Link to='/'>Home</Link>
+                {/* <Link to='../'>Back</Link> */}
             </Container>
         );
     }

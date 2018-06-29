@@ -21,7 +21,8 @@ const UserList = styled.div`
     flex-direction: column;
     justify-content: space-between;
     margin: 50px 0 0 50px
-
+    background: #4d5052;
+    border-radius: 20px;
 `
 const EachUser = styled.div`
     display: flex;
@@ -107,7 +108,7 @@ class UsersList extends Component {
                                         <img src={user.image} alt="" />
                                         <h1>{user.name}</h1>
                                     </Link>
-                                    {/* <button onClick={() => { this.deleteUser(user._id) }}>Remove User</button> */}
+                                    <button onClick={() => { this.deleteUser(user._id) }}>Remove User</button>
                                 </EachUser>
                             )
                         })}

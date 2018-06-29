@@ -1,6 +1,18 @@
 import React, { Component } from 'react';
 import axios from 'axios'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import styled from 'styled-components'
+
+const Container = styled.div`
+    display: flex;
+`
+const Poster = styled.div`
+    margin: 25px;
+
+`
+const MovieInfo = styled.div`
+    margin: 50px;
+`
 
 class IndividualMovie extends Component {
     state = {
@@ -13,14 +25,14 @@ class IndividualMovie extends Component {
         const userId = this.props.match.params.userId
         const movieId = this.props.match.params.movieId
         axios.get(`/api/users/${userId}/movies/${movieId}`)
-        .then((res) => {
-            console.log(res.data)
-            this.setState({
-                user: res.data,
-                movie: res.data.movie,
-                comments: res.data.movie.comments,
+            .then((res) => {
+                console.log(res.data)
+                this.setState({
+                    user: res.data,
+                    movie: res.data.movie,
+                    comments: res.data.movie.comments,
+                })
             })
-        })
     }
 
     componentDidMount() {
@@ -31,15 +43,19 @@ class IndividualMovie extends Component {
         const userId = this.props.match.params.userId
         const movieId = this.state.movie._id
         return (
-            <div>
+            <Container>
+                <MovieInfo>
                 <h2>{this.state.movie.Title}</h2>
-                <img src={this.state.movie.Poster} alt=""/>
                 <p>{this.state.movie.Director}</p>
                 <p>{this.state.movie.Plot}</p>
                 <p>{this.state.movie.Rated}</p>
                 <p>{this.state.movie.Year}</p>
                 <button><Link to={`/${userId}/movies/${movieId}/comments`} comments={this.state.comments}>Comments</Link></button>
-            </div>
+                </MovieInfo>
+                <Poster>
+                <img src={this.state.movie.Poster} alt="" />
+                </Poster>
+            </Container>
         );
     }
 }
