@@ -46,10 +46,10 @@ class IndividualMovie extends Component {
             <Container>
                 <MovieInfo>
                 <h2>{this.state.movie.Title}</h2>
-                <p>{this.state.movie.Director}</p>
-                <p>{this.state.movie.Plot}</p>
-                <p>{this.state.movie.Rated}</p>
-                <p>{this.state.movie.Year}</p>
+                <p>Director: {this.state.movie.Director}</p>
+                <p>Summary: {this.state.movie.Plot}</p>
+                <p>Rating: {this.state.movie.Rated}</p>
+                <p>Release Date: {this.state.movie.Year}</p>
                 <button><Link to={`/${userId}/movies/${movieId}/comments`} comments={this.state.comments}>Comments</Link></button>
                 </MovieInfo>
                 <Poster>
