@@ -2,6 +2,18 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import NewCommentForm from './NewCommentForm';
 import EditComment from './EditComment';
+import styled from 'styled-components'
+
+const EachComment = styled.div`
+margin: 50px;
+width: 60%;
+h2 {
+    margin: 5px 0;
+}
+h4 {
+    margin: 5px 0
+}
+`
 
 class CommentList extends Component {
     state = {
@@ -54,15 +66,16 @@ class CommentList extends Component {
                 <div>
                     {this.state.comments.map((comment, i) => {
                         return (
-                            <div key={i}>
+                            <EachComment key={i}>
                                 {comment.editComment ? <EditComment /> :
                                     <div>
-                                        <h3>{comment.title}</h3>
+                                        <h2>Title: {comment.title}</h2>
+                                        <h4>Author: {comment.author}</h4>
                                         <p>{comment.comment}</p>
                                         <button onClick={() => { this.deleteComment(comment._id) }}>Remove Comment</button>
                                         <button onClick={() => {this.toggleEditComment(i)}}>Edit Comment</button>
                                     </div>}
-                            </div>
+                            </EachComment>
                         )
                     })}
                 </div>
