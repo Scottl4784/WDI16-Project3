@@ -12,6 +12,10 @@ const Content = styled.div`
     justify-content: space-around;
 
 `
+const Title = styled.div`
+    text-align: center;
+    margin: 50px 0;
+`
 const UserList = styled.div`
     display: flex;
     flex-direction: column;
@@ -40,6 +44,14 @@ const EachUser = styled.div`
 const SignUp = styled.div`
     display: flex;
     flex-direction: column;
+    border-style: solid;
+    border-radius: 10px;
+    padding: 20px;
+    input {
+        border-radius: 5px;
+        border-style: none;
+        margin: 0 5px;
+    }
 `
 
 class UsersList extends Component {
@@ -73,6 +85,10 @@ class UsersList extends Component {
 
     render() {
         return (
+            <div>
+                <Title>
+                    <h1>Movie Message Board</h1>
+                    </Title>
                 <Content>
                 <UserList>
                 {this.state.users.map((user, i) => {
@@ -95,6 +111,7 @@ class UsersList extends Component {
                     <NewUserForm newUser={this.newUser} {...this.props}/>
                 </SignUp>
                 </Content>
+                </div>
         );
     }
 }
