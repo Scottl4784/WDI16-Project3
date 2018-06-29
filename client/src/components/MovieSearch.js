@@ -96,7 +96,7 @@ class MovieSearch extends Component {
         this.setState({searchForMovie})
     }
     handleKeyPress = (event) => {
-        if(event.key == 'Enter'){
+        if(event.key === 'Enter'){
           this.handleSearch()
         }
       }

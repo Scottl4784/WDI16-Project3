@@ -7,6 +7,7 @@ import styled from 'styled-components'
 const EachComment = styled.div`
 margin: 50px;
 width: 60%;
+hyphens: auto;
 h2 {
     margin: 5px 0;
 }
