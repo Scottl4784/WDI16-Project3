@@ -12,16 +12,11 @@ const Content = styled.div`
     justify-content: space-around;
 
 `
-const Title = styled.div`
-    text-align: center;
-    margin: 50px 0;
-`
 const UserList = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     margin: 50px 0 0 50px
-    background: #4d5052;
     border-radius: 20px;
 `
 const EachUser = styled.div`
@@ -29,7 +24,10 @@ const EachUser = styled.div`
     flex-direction: column;
     justify-content: space-around;
     align-content: center;
-    margin: 20px;
+    margin: 10px;
+    padding: 10px;
+    background-color: #c3c7cc;
+    border-radius: 10px;
     h1 {
         margin: 10px;
         padding: 20px 0 0 0;
@@ -57,6 +55,9 @@ const SignUp = styled.div`
     border-radius: 10px;
     padding: 20px;
     height: 200px;
+    background-color: #000000ad;
+    color: white;
+    border: none;
     input {
         border-radius: 5px;
         border-style: none;

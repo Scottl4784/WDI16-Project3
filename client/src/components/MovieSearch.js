@@ -3,20 +3,41 @@ import axios from 'axios'
 import styled from 'styled-components'
 
 const Container = styled.div`
-  text-align: center;
+float: right;
+display: flex;
+flex-direction: column;
+border-style: solid;
+padding: 20px;
+align-items: center;
+height: 400px;
+width: 200px;
+margin: 20px;
+background-color: #000000ad;
+border: none;
+color: white;
+img {
+    width: 100px;
+    height: 150px;
+}
 `
 const SearchBar = styled.div`
     display: flex;
     align-items: center;
     margin: 0 0 25px 0
     button {
+        margin: 5px;
         height: 30px;
         width: 60px;
-        border-radius: 10px;
+        border-radius: 5px;
         background: #eceae4;
     }
     input {
+        margin: 5px;
+        border-radius: 5px;
+        border: none;
         height: 25px;
+        width: 150px;
+        text-align: center;
     }
 `
 const SearchResults = styled.div`
@@ -50,9 +71,6 @@ class MovieSearch extends Component {
             console.log(res)
             this.resetState()
         })
-        .then(() => {
-            this.toggleSearch()
-        })
         .catch((err) => {
             console.log(err)
         })
@@ -73,9 +91,15 @@ class MovieSearch extends Component {
         this.setState(resetState)
     }
     toggleSearch = () => {
+        console.log('test')
         const searchForMovie = !this.state.searchForMovie
         this.setState({searchForMovie})
     }
+    handleKeyPress = (event) => {
+        if(event.key == 'Enter'){
+          this.handleSearch()
+        }
+      }
     
 
 
@@ -90,8 +114,8 @@ class MovieSearch extends Component {
                         type="text"
                         name="title"
                         onChange={this.handleChange}
+                        onKeyPress={this.handleKeyPress}
                     />
-                    <button onClick={this.handleSearch}>Search</button>
                     </SearchBar>
                     {this.state.searchResults.map((result, i) => {
                         return (
@@ -100,6 +124,7 @@ class MovieSearch extends Component {
                             </SearchResults>
                         )
                     })}
+
             </Container>
         );
     }

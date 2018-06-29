@@ -10,20 +10,22 @@ flex-direction: row;
 
 `
 const SearchBar = styled.div`
-float: right;
-display: flex;
-flex-direction: column;
-border-style: solid;
-padding: 20px;
-align-items: center;
-height: 400px;
-margin: 20px;
-background-color: #000000ad;
-color: white;
-img {
-    width: 100px;
-    height: 150px;
-}
+// float: right;
+// display: flex;
+// flex-direction: column;
+// border-style: solid;
+// padding: 20px;
+// align-items: center;
+// height: 200px;
+// width: 200px
+// margin: 20px;
+// background-color: #000000ad;
+// border: none;
+// color: white;
+// img {
+//     width: 100px;
+//     height: 150px;
+// }
 `
 const ListOfMovies = styled.div`
     display: flex;
@@ -53,7 +55,8 @@ class MovieList extends Component {
     state = {
         user: [],
         movies: [],
-        searchResults: []
+        searchResults: [],
+        searchForMovie: false,
     }
 
     getMovies() {
@@ -89,6 +92,11 @@ class MovieList extends Component {
             this.setState({ movies: res.data.user.movies })
         })
     }
+       toggleSearch = () => {
+        console.log('test')
+        const searchForMovie = !this.state.searchForMovie
+        this.setState({searchForMovie})
+       }
 
 
 
@@ -105,7 +113,6 @@ class MovieList extends Component {
                                 <EachMovie key={i}>
                                     <Link to={`/${this.state.user._id}/movies/${movie._id}`}>
                                         <img src={movie.Poster} alt="" />
-                                        {/* <h3>{movie.Title}</h3> */}
                                     </Link>
 
                                     <button onClick={() => { this.deleteMovie(movie._id) }}>Remove Movie</button>

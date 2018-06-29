@@ -8,13 +8,17 @@ const Container = styled.div`
     margin: 25px;
     display: flex;
     justify-content: space-between;
+    background-color: black;
+    border-radius: 15px;
 `
 const Logo = styled.div`
-    border-right-style: solid;
+    border-right-style: solid
     padding: 2rem 1rem;
+    color: #bdaf31cc;
 `
 const HomeButton = styled.div`
     padding: 1rem 1rem 0 0;
+    color: #bdaf31cc;
 `
 
 class Navbar extends Component {
@@ -22,7 +26,7 @@ class Navbar extends Component {
         return (
             <Container>
                 <Logo>
-                    Movie Message Board
+                <Link to='/'>Movie Message Board</Link>
                 </Logo>
                 <HomeButton>
                 <Link to='/'>Home</Link>
