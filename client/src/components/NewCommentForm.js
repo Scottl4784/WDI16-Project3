@@ -36,6 +36,9 @@ textarea {
 `
 
 class NewCommentForm extends Component {
+    state = {
+        title: []
+    }
     handleChange = (event) => {
         const inputName = event.target.name
         const userInput = event.target.value
@@ -49,14 +52,24 @@ class NewCommentForm extends Component {
         axios.post(`/api/users/${userId}/movies/${movieId}/comments`, this.state).then((res) => {
             const singleMovie = res.data.user.movies.find((movie) => movie._id === movieId)
             this.props.newComment(singleMovie.comments)
+    
         })
         .catch((err) => {
             console.log(err)
         })
     }
+    resetState = () => {
+        const resetState = { ...this.state }
+        resetState.title = []
+        resetState.author = []
+        resetState.comment = []
+        this.setState(resetState)
+        console.log(this.state)
+    }
     handleKeyPress = (event) => {
         if(event.key === 'Enter'){
           this.handleSubmit()
+          this.resetState()
         }
       }
 
@@ -64,26 +77,31 @@ class NewCommentForm extends Component {
         return (
             <Container>
                 <h3>New Comment</h3>
-                <form onKeyPress={this.handleKeyPress}>
                     <input
+                        value={this.state.title}
                         placeholder="Title"
                         type="text"
                         name="title"
                         onChange={this.handleChange}
+                        onKeyPress={this.handleKeyPress}
                     />
                     <input
+                        value={this.state.author}
                         placeholder="Author"
                         type="text"
                         name="author"
                         onChange={this.handleChange}
+                        onKeyPress={this.handleKeyPress}
                     />
                     <textarea
+                        value={this.state.comment}
                         placeholder="Comment"
                         type="text"
                         name="comment"
                         onChange={this.handleChange}
+                        onKeyPress={this.handleKeyPress}
                     />
-                </form>
+
             </Container>
         );
     }
