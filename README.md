@@ -23,4 +23,5 @@ Movie Message Board is an app that allows you to find movies that you have watch
    * Add more interactivty between different users.
    * Create a more "message board" feel.
    * improve styling and format.
+   * Add a settiings page for users.
    
