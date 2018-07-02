@@ -6,6 +6,9 @@ const Container = styled.div`
 `
 
 class NewUserForm extends Component {
+    state = {
+        name: [],
+    }
 
     
     handleChange = (event) => {
@@ -19,11 +22,14 @@ class NewUserForm extends Component {
         event.preventDefault()
         axios.post('/api/users', this.state).then((res) => {
             this.props.newUser(res.data.user)
+            this.resetState()
+            console.log(this.state)
         })
     }
     resetState = () => {
-        let resetState = {...this.state}
-        resetState = []
+        const resetState = {...this.state}
+        resetState.name = []
+        resetState.image = []
         this.setState(resetState)
     }
 
@@ -31,21 +37,23 @@ class NewUserForm extends Component {
     render() {
         return (
             <Container>
-                <form onSubmit={this.handleSubmit}>
+                
                     <input
                         placeholder="Name"
+                        value={this.state.name}
                         type="text"
                         name="name"
                         onChange={this.handleChange}
                     />
                     <input
                         placeholder="Image"
+                        value={this.state.image}
                         type="text"
                         name="image"
                         onChange={this.handleChange}
                     />
-                    <button>Create</button>
-                </form>
+                    <button onClick={this.handleSubmit}>Create</button>
+             
             </Container>
         );
     }
