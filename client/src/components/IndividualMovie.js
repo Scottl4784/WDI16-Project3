@@ -52,7 +52,7 @@ class IndividualMovie extends Component {
                 <p>Director: {this.state.movie.Director}</p>
                 <p>Rating: {this.state.movie.Rated}</p>
                 <p>Release Date: {this.state.movie.Year}</p>
-                <button><Link to={`/${userId}/movies/${movieId}/comments`} comments={this.state.comments}>Comments</Link></button>
+                <button><Link to={`/${userId}/movies/${movieId}/comments`}>Comments</Link></button>
                 </MovieInfo>
                 <Poster>
                 <img src={this.state.movie.Poster} alt="" />

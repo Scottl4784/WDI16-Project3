@@ -16,7 +16,7 @@ background-color: #000000b8;
 border: none;
 color: white;
 text-align: center;
-h3 {
+<h3></h3> {
     margin: 0 0 15px 0;
 }
 input {
@@ -32,12 +32,14 @@ textarea {
     height: 250px;
     text-align: center;
     border: none;
+    resize: none;
 }
 `
 
 class NewCommentForm extends Component {
     state = {
-        title: []
+        title: [],
+        createNewComment: false
     }
     handleChange = (event) => {
         const inputName = event.target.name
@@ -64,13 +66,16 @@ class NewCommentForm extends Component {
         resetState.author = []
         resetState.comment = []
         this.setState(resetState)
-        console.log(this.state)
     }
     handleKeyPress = (event) => {
         if(event.key === 'Enter'){
           this.handleSubmit()
           this.resetState()
         }
+      }
+      toggleNewComment = () => {
+        const newComment = !this.state.createNewComment
+        this.setState({ createNewComment: newComment })
       }
 
     render() {
@@ -101,7 +106,6 @@ class NewCommentForm extends Component {
                         onChange={this.handleChange}
                         onKeyPress={this.handleKeyPress}
                     />
-
             </Container>
         );
     }

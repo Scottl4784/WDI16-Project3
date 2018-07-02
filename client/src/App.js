@@ -23,11 +23,14 @@ const Body = styled.div`
 
 class App extends Component {
   render() {
+    const navbarComponent = (props) => (
+      <Navbar {...props} />
+    )
     return (
       <Router>
         <Body>
           <div>
-            <Navbar {...this.props} />
+            <Navbar render={navbarComponent} />
           </div>
           <div>
             <Switch>

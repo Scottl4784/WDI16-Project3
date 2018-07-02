@@ -17,7 +17,7 @@ const Logo = styled.div`
     color: #bdaf31cc;
 `
 const HomeButton = styled.div`
-    padding: 1rem 1rem 0 0;
+    padding: 2rem 1rem 0 0;
     color: #bdaf31cc;
 `
 

@@ -96,9 +96,6 @@ class UsersList extends Component {
     render() {
         return (
             <div>
-                {/* <Title>
-                    <h1>Movie Message Board</h1>
-                </Title> */}
                 <Content>
                     <UserList>
                         {this.state.users.map((user, i) => {

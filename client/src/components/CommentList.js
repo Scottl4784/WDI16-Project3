@@ -5,9 +5,12 @@ import EditComment from './EditComment';
 import styled from 'styled-components'
 
 const EachComment = styled.div`
-margin: 50px;
-width: 60%;
+margin: 50px 0 50px 25px;
+background-color: #000000bf;
+padding: 25px;
+width: 50%;
 hyphens: auto;
+color: white;  
 h2 {
     margin: 5px 0;
 }
@@ -18,6 +21,7 @@ button {
     background-color: #981717;
     border: none;
     color: white;
+    margin: 0 75px 15px 0;
 }
 `
 
@@ -58,7 +62,8 @@ class CommentList extends Component {
 
     toggleEditComment = (i) => {
         const editComment = !this.state.comments[i].editComment
-        this.setState({ editComment })
+        this.setState({  editComment })
+        console.log(i)
     }
 
     render() {
@@ -74,10 +79,11 @@ class CommentList extends Component {
                                 {comment.editComment ? <EditComment /> :
                                     <div>
                                         <button onClick={() => { this.deleteComment(comment._id) }}>X</button>
+                                        <button onClick={() => { this.toggleEditComment(i) }}>Edit</button>
                                         <h2>Title: {comment.title}</h2>
                                         <h4>Author: {comment.author}</h4>
                                         <p>{comment.comment}</p>
-                                    </div>}
+                                    </div>} 
                             </EachComment>
                         )
                     })}
