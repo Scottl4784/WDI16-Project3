@@ -76,7 +76,7 @@ class MovieSearch extends Component {
         })
     }
     handleSearch = () => {
-        axios.get(`http://www.omdbapi.com/?t=${this.state.search}&apikey=66f47cb`)
+        axios.get(`https://www.omdbapi.com/?t=${this.state.search}&apikey=66f47cb`)
             .then((res) => {
             const newSearchResults = [...this.state.searchResults]
             newSearchResults.push(res.data)
