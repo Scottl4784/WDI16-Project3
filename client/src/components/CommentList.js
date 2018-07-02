@@ -61,9 +61,11 @@ class CommentList extends Component {
     }
 
     toggleEditComment = (i) => {
-        const editComment = !this.state.comments[i].editComment
-        this.setState({  editComment })
-        console.log(i)
+        const clone = [...this.state.comments]
+        clone[i].editComment = !clone[i].editComment
+        this.setState({comments: clone})
+        console.log(this.state.comments[i].editComment)
+        console.log(this.state)
     }
 
     render() {
@@ -76,10 +78,10 @@ class CommentList extends Component {
                     {this.state.comments.map((comment, i) => {
                         return (
                             <EachComment key={i}>
-                                {comment.editComment ? <EditComment /> :
+                                {comment.editComment ? <EditComment toggleEditComment={this.toggleEditComment} comment={this.state.comments[i]} /> :
                                     <div>
                                         <button onClick={() => { this.deleteComment(comment._id) }}>X</button>
-                                        <button onClick={() => { this.toggleEditComment(i) }}>Edit</button>
+                                        <button onClick={() => { this.toggleEditComment(i)}}>Edit</button>
                                         <h2>Title: {comment.title}</h2>
                                         <h4>Author: {comment.author}</h4>
                                         <p>{comment.comment}</p>

@@ -70,7 +70,7 @@ class UsersList extends Component {
     state = {
         users: []
     }
-
+    // Get all users from the DB
     getUsers() {
         axios.get('/api/users').then(res => {
             this.setState({ users: res.data.users })
@@ -80,13 +80,13 @@ class UsersList extends Component {
     componentDidMount() {
         this.getUsers()
     }
-
+    //Pushes a new user to the State
     newUser = (user) => {
         const newUser = [...this.state.users]
         newUser.push(user)
         this.setState({ users: newUser })
     }
-
+    // Deletes user from the DB
     deleteUser = (userId) => {
         axios.delete(`/api/users/${userId}`).then((res) => {
             this.setState({ users: res.data.users })

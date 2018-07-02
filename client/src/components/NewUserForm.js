@@ -10,7 +10,7 @@ class NewUserForm extends Component {
         name: [],
     }
 
-    
+    // pushes user input from text fields into state
     handleChange = (event) => {
         const inputName = event.target.name
         const userInput = event.target.value
@@ -18,6 +18,7 @@ class NewUserForm extends Component {
             [inputName]: userInput
         })
     }
+    //pushes state into the DB
     handleSubmit = (event) => {
         event.preventDefault()
         axios.post('/api/users', this.state).then((res) => {
@@ -26,6 +27,8 @@ class NewUserForm extends Component {
             console.log(this.state)
         })
     }
+
+    //resets the text fields
     resetState = () => {
         const resetState = {...this.state}
         resetState.name = []
