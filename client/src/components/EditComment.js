@@ -18,13 +18,15 @@ display: flex;
         border-style: none;
         margin: 0 5px;
     }
+    textarea {
+        resize: none;
+    }
 `
 
 class EditComment extends Component {
     handleChange = (event) => {
         const inputName = event.target.name
         const userInput = event.target.value
-        console.log(this.state)
         this.setState({
             [inputName]: userInput
         })
@@ -45,30 +47,27 @@ class EditComment extends Component {
     handleKeyPress = (event) => {
         if (event.key === 'Enter') {
             this.handleSubmit()
-            this.resetState()
         }
     }
     render() {
         return (
             <EditForm>
                 <input
-                        value={this.props.title}
-                        placeholder="Title"
+                        placeholder={this.props.comment.title}
                         type="text"
                         name="title"
                         onChange={this.handleChange}
                         onKeyPress={this.handleKeyPress}
                     />
                     <input
-                        value={this.props.author}
-                        placeholder={this.props.author}
+                        placeholder={this.props.comment.author}
                         type="text"
                         name="author"
                         onChange={this.handleChange}
                         onKeyPress={this.handleKeyPress}
                     />
                     <textarea
-                        placeholder="Comment"
+                        placeholder={this.props.comment.comment}
                         type="text"
                         name="comment"
                         onChange={this.handleChange}
