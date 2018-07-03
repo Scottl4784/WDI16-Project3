@@ -8,17 +8,19 @@ display: flex;
     border-style: solid;
     border-radius: 10px;
     padding: 20px;
-    height: 200px;
-    background-color: #000000ad;
     color: white;
     border: none;
     input {
         height: 25px;
+        width: 350px;
         border-radius: 5px;
         border-style: none;
-        margin: 0 5px;
+        margin: 5px 5px;
     }
     textarea {
+        width: 350px;
+        height: 75px;
+        margin: 5px;
         resize: none;
     }
 `
