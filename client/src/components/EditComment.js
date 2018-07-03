@@ -24,28 +24,27 @@ class EditComment extends Component {
     handleChange = (event) => {
         const inputName = event.target.name
         const userInput = event.target.value
+        console.log(this.state)
         this.setState({
             [inputName]: userInput
         })
     }
-    handleSubmit = (i) => {
+    handleSubmit = () => {
         const userId = this.props.match.params.userId
         const movieId = this.props.match.params.movieId
-        axios.put(`/api/users/${userId}/movies/:movieId/comments`, this.state).then((res) => {
-            this.props.editComment(res.data)
-            this.resetState()
+        const commentId = this.props.commentId
+        console.log(commentId)
+        axios.put(`/api/users/${userId}/movies/${movieId}/comments/${commentId}`, this.state).then((res) => {
+            this.props.updateComment()
         })
             .catch((err) => {
                 console.log(err)
             })
     }
-    toggleSearch = () => {
-        const searchForMovie = !this.state.searchForMovie
-        this.setState({ searchForMovie })
-    }
+
     handleKeyPress = (event) => {
         if (event.key === 'Enter') {
-            this.handleSearch()
+            this.handleSubmit()
             this.resetState()
         }
     }
@@ -75,7 +74,7 @@ class EditComment extends Component {
                         onChange={this.handleChange}
                         onKeyPress={this.handleKeyPress}
                     />
-                <button onClick={() => {this.props.toggleEditComment()}}>Submit</button>
+                <button onClick={() => {this.handleSubmit()}}>Submit</button>
             </EditForm>
         );
     }

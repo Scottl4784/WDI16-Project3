@@ -60,6 +60,10 @@ class CommentList extends Component {
             })
     }
 
+    updateComment = () => {
+        this.getMovieComments()
+      }
+
     toggleEditComment = (i) => {
         const clone = [...this.state.comments]
         clone[i].editComment = !clone[i].editComment
@@ -78,7 +82,7 @@ class CommentList extends Component {
                     {this.state.comments.map((comment, i) => {
                         return (
                             <EachComment key={i}>
-                                {comment.editComment ? <EditComment toggleEditComment={this.toggleEditComment} comment={this.state.comments[i]} /> :
+                                {comment.editComment ? <EditComment {...this.props} updateComment={this.updateComment} commentId={comment._id}/> :
                                     <div>
                                         <button onClick={() => { this.deleteComment(comment._id) }}>X</button>
                                         <button onClick={() => { this.toggleEditComment(i)}}>Edit</button>

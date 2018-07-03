@@ -37,10 +37,11 @@ router.post('/', (req, res) => {
   router.put('/:commentId', (req,res) => {
       const userId = req.params.userId
       const movieId = req.params.movieId
+      const commentId = req.params.commentId
       const newComment = req.body
       User.findById(userId)
       .then((user) => {
-          const comment = user.movies.id(movieId).comments.id(commentsId)
+          const comment = user.movies.id(movieId).comments.id(commentId)
           comment.title = newComment.title
           comment.author = newComment.author
           comment.comment = newComment.comment
